@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análisis de Sentimientos en Tweets</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Resultados del Análisis de Sentimientos</h1>
+    <canvas id="sentimentChart" width="400" height="200"></canvas>
+    <script>
+        // Convertir datos de Jinja2 a JSON seguro para JS
+        const rawData = {{ data | tojson | safe }};
+        
+        // Procesar datos para Chart.js
+        const chartData = {
+            labels: Object.keys(rawData),
+            datasets: [{
+                label: 'Distribución de Sentimientos',
+                data: Object.values(rawData),
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Renderizar gráfico
+        const ctx = document.getElementById('sentimentChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+    </script>
+</body>
+</html>

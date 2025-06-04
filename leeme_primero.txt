@@ -1,0 +1,125 @@
+Antes de correr el aplicativo:
+0) levantar ambiente virtual
+instale Flask: pip3 install flask
+
+
+1) levantar hadoop
+2) levantar ssh
+
+
+
+sudo systemctl start ssh
+sudo systemctl enable ssh
+sudo systemctl status ssh
+
+sudo ufw status
+
+hadoop version
+whereis hadoop
+  cd /opt/hadoop/
+    ./stop-all.sh
+ ./start-all.sh
+
+jps
+
+-crear directorio hdfs:
+hdfs dfs -mkdir -p /2dato_origen_hdfs
+
+
+
+- Para crear el directorio hdfs (por si falla "hdfs dfs -mkdir -p  2dato_origen_hdfs"):
+ hdfs dfs -mkdir -p /user
+hdfs dfs -mkdir /user/miguelruiza
+hdfs dfs -chown miguelruiza:supergroup /user/miguelruiza
+hdfs dfs -chmod 755 /user/miguelruiza
+
+- Para ver el contenido
+hdfs dfs -ls /user/miguelruiza
+
+- Crear carpeta hdfs:
+hdfs dfs -mkdir -p 2dato_origen_hdfs
+
+- Copiar contenido a carpeta hdfs:
+hdfs dfs -put 1dato_origen/*.* 2dato_origen_hdfs
+
+- Para ver el contenido:
+hdfs dfs -ls 2dato_origen_hdfs
+
+-----------
+Prueba logica:
+
+echo "1,I love Hadoop! It's amazing.,2024-01-01
+2,MapReduce is complicated.,2024-01-02
+3,Big Data is the future.,2024-01-03" | python3 mapper.py
+-----------
+
+- Dio error el anterio, para instalar textblob se requiere instalar entorno virtual:
+python3 -m venv venv
+-activar:
+source venv/bin/activate
+
+pip install textblob
+python -m textblob.download_corpora
+
+- Para desactivar el entorno virtual: 
+deactivate
+
+
+-----------
+Prueba logica:
+
+echo "1,I love Hadoop! It's amazing.,2024-01-01
+2,MapReduce is complicated.,2024-01-02
+3,Big Data is the future.,2024-01-03" | python3 mapper.py | sort -k1,1 | python3 reducer.py
+-----------
+
+- Ahora ejecuto el proceso mapreduce con python:
+
+
+En terminal:
+hdfs dfs -rm -r 2dato_origen_hdfs_out && mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+
+En python:
+        # 1. Eliminar el directorio de salida (si existe)
+        subprocess.run(
+            ['hdfs', 'dfs', '-rm', '-r', '2dato_origen_hdfs_out'],
+            check=False  # No lanzar excepción si falla (directorio no existe)
+        )
+        
+        # 2. Ejecutar el job MapReduce
+        subprocess.run([
+            'mapred', 'streaming',
+            '-files', 'mapper.py,reducer.py',  # Archivos a enviar al cluster
+            '-mapper', 'mapper.py',
+            '-reducer', 'reducer.py',
+            '-input', '2dato_origen_hdfs/sample_tweets.csv',
+            '-output', '2dato_origen_hdfs_out'
+        ], check=True)  # Falla si el job de Hadoop falla
+
+
+
+
+
+
+- Para ver el contenido:
+hdfs dfs -ls 2dato_origen_hdfs_out
+
+- Recuperar resultados:
+hdfs dfs -cat 2dato_origen_hdfs_out/part-00000
+
+Ejecutar aplicativo, en terminal:
+python3 app.py
+
+Ver resultados, en navegador:
+http://127.0.0.1:5000/
+
+
+
+
+
+
+
+
+
+
+
