@@ -23,7 +23,7 @@ whereis hadoop
 jps
 
 -crear directorio hdfs:
-hdfs dfs -mkdir -p /2dato_origen_hdfs
+hdfs dfs -mkdir -p 2dato_origen_hdfs
 
 
 
