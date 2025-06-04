@@ -1,7 +1,6 @@
-# Haddop - Mapreduce 
+# ANÁLISIS DE SENTIMIENTOS EN REDES SOCIALES USANDO HADOOP MAPREDUCE Y VISUALIZACIÓN WEB
 
-Mi Proyecto Haddop - Mapreduce .
-
+Proyecto Haddop - Mapreduce para análisis de sentimientos.
 
 ## Antes de correr el aplicativo:
 0) levantar ambiente virtual
