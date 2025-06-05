@@ -79,6 +79,12 @@ echo "1,I love Hadoop! It's amazing.,2024-01-01
 En terminal:
 hdfs dfs -rm -r 2dato_origen_hdfs_out && mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
 
+
+hdfs dfs -rm -r 2dato_origen_hdfs_out && mapred streaming -files mapper.py,reducer.py  -mapper mapper.py   -reducer reducer.py -input 2dato_origen_hdfs/sample_tweets.csv -output 2dato_origen_hdfs_out
+
+
+
+
 En python:
         # 1. Eliminar el directorio de salida (si existe)
         subprocess.run(
