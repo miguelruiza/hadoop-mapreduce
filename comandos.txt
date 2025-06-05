@@ -1,0 +1,879 @@
+    1  xrand --listmonitors
+    2  xrandr --listmonitors
+    3  xrandr --output Virtual-1 --mode 2560x1440
+    4  cvt 2560 1440
+    5  xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
+    6  xrandr --addmode Virtual-1 2560x1440_60.00
+    7  sudo apt update
+    8  sudo apt install openjdk-17-jdk -y
+    9  java -version
+   10  wget https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+   11  tar -xzvf hadoop-3.3.6.tar.gz
+   12  sudo mv hadoop-3.3.6 /opt/hadoop
+   13  echo '
+   14  export HADOOP_HOME=/opt/hadoop
+   15  export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+   16  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+   17  ' >> ~/.bashrc
+   18  source ~/.bashrc
+   19  nano ~/.bashrc
+   20  nano /opt/hadoop/etc/hadoop/core-site.xml
+   21  hdfs namenode -format
+   22  clear
+   23  start-dfs.sh
+   24  jps
+   25  sudo apt install docker.io -y
+   26  sudo systemctl enable --now docker
+   27  sudo usermod -aG docker $USER
+   28  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   29  sudo snap install curl
+   30  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   31  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+   32  minikube start --driver=docker
+   33  sudo usermod -aG docker $USER && newgrp docker
+   34  jps
+   35  minikube start --driver=docker
+   36  sudo snap install kubectl --classic
+   37  kubectl get pods -A 
+   38  hdfs dfs -mkdir /input
+   39  mkdir ~/datos/
+   40  cd ~/datos/
+   41  nano texto1.txt
+   42  nano texto2.txt
+   43  hdfs dfs -mkdir /input
+   44  jps
+   45  NameNode
+   46  nano $HADOOP_HOME/etc/hadoop/core-site.xml
+   47  sudo netstat -tulnp | grep 9000
+   48  sudo apt install net-tools
+   49  sudo netstat -tulnp | grep 9000
+   50  stop-dfs.sh
+   51  hdfs namenode -format
+   52  start-dfs.sh
+   53  telnet localhost 9000
+   54  al usar "telnet localhost 9000" me sale este mensaje:
+   55  "Trying 127.0.0.1...
+   56  telnet: Unable to connect to remote host: Connection refused"
+   57  ¿falta instalar un localhost o algo asi?
+   58  sudo apt install apache2
+   59  sudo systemctl start apache2
+   60  curl http://localhost
+   61  clear
+   62  telnet localhost 9000 
+   63  jps | grep NameNode
+   64  start-dfs.sh
+   65  cat $HADOOP_HOME/logs/hadoop-*-namenode-*.log | grep -i error
+   66  jps
+   67  sudo netstat -tulnp | grep 9000
+   68  stop-dfs.sh
+   69  hdfs namenode -format 
+   70  start-dfs.sh
+   71  hdfs namenode -format
+   72  start-dfs.sh
+   73  jps
+   74  minikube start --driver=docker
+   75  kubectl get pods -A
+   76  hdfs dfs -mkdir /input
+   77  sudo apt update
+   78  sudo apt upgrade
+   79  sudo apt install -y
+   80  sudo apt install bleachbit -y
+   81  python3 --version
+   82  curl -fsSL "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/windsurf.gpg" | sudo gpg --dearmor -o /usr/share/keyrings/windsurf-stable-archive-keyring.gpg
+   83  echo "deb [signed-by=/usr/share/keyrings/windsurf-stable-archive-keyring.gpg arch=amd64] https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt stable main" | sudo tee /etc/apt/sources.list.d/windsurf.list > /dev/null
+   84  sudo apt-get update
+   85  sudo apt-get upgrade windsurf
+   86  clear
+   87  sudo apt-get update
+   88  sudo apt-get install texlive-full
+   89  latex --version
+   90  sudo apt update && sudo apt upgrade
+   91  sudo apt install inkscape
+   92  sudo apt update
+   93  sudo apt upgrade
+   94  sudo apt install gimp
+   95  git status
+   96  git init
+   97  git config --global init.defaultBranch main
+   98  git branch -m main
+   99  clear
+  100  git add .
+  101  git commit -m "20250520 09:57"
+  102  git remote add origin git@github.com:miguelruiza/articulos.git
+  103  git push -f origin main
+  104  clear
+  105  git add .
+  106  git commit -m "20250520 09:59"
+  107  git push
+  108  git push --set-upstream origin main
+  109  clear
+  110  git status
+  111  git add .
+  112  git commit -m "20250520 10:01"
+  113  git push
+  114  git status
+  115  git init
+  116  git add .
+  117  git commit -m "Inicialización del repositorio con contenido local"
+  118  git remote add origin git@github.com:miguelruiza/articulos.git
+  119  git init
+  120  git commit -m "20250520 10:40"
+  121  git add .
+  122  git commit -m "20250520 10:40"
+  123  git branch -M main
+  124  git remote add origin git@github.com:miguelruiza/Tesis_MCC.git
+  125  git push -u origin main
+  126  cd ""
+  127  cd "/home/miguelruiza/Documents/Tesis_DIS"
+  128  git init
+  129  git add .
+  130  git commit -m "20250520 09:14"
+  131  git config --global user.name "Miguel Ruíz Adarmes" && git config --global user.email "miguelruizad@gmail.com"
+  132  git commit -m "20250520 09:14"
+  133  ssh-keygen -t ed25519 -C "miguelruizad@gmail.com"
+  134  git remote add origin git@github.com:miguelruiza/Tesis_DIS.git
+  135  git checkout -b main && git branch -D master
+  136  git push -u origin main
+  137  cat ~/.ssh/id_ed25519.pub
+  138  git status
+  139  git push -u origin main
+  140  git pull origin main
+  141  git config pull.rebase false && git pull origin main
+  142  git pull origin main --allow-unrelated-histories
+  143  git reset --hard && git clean -fd
+  144  clear
+  145  git add .
+  146  git commit -m "20250520 09:38"
+  147  git push
+  148  git status
+  149  git push -f origin main
+  150  git fetch origin && git diff origin/main
+  151  git commit --allow-empty -m "Forzando reset del repositorio" && git push -f origin main
+  152  clear
+  153  git add .
+  154  git commit -m "20250520 09:42"
+  155  git push
+  156  git push --set-upstream origin main
+  157  clear
+  158  git add .
+  159  git commit -m "20250520 09:43"
+  160  git push
+  161  git add .
+  162  git commit -m "20250520 09:44"
+  163  git push
+  164  clear
+  165  pdflatex Tesis_DIS
+  166  makeglossaries Tesis_DIS
+  167  biber Tesis_DIS
+  168  pdflatex Tesis_DIS
+  169  makeglossaries Tesis_DIS
+  170  biber Tesis_DIS
+  171  pdflatex Tesis_DIS
+  172  makeglossaries Tesis_DIS
+  173  biber Tesis_DIS
+  174  pdflatex Tesis_DIS
+  175  makeglossaries Tesis_DIS
+  176  biber Tesis_DIS
+  177  pdflatex Tesis_DIS
+  178  makeglossaries Tesis_DIS
+  179  biber Tesis_DIS
+  180  pdflatex Tesis_DIS
+  181  makeglossaries Tesis_DIS
+  182  biber Tesis_DIS
+  183  pdflatex Tesis_DIS
+  184  makeglossaries Tesis_DIS
+  185  biber Tesis_DIS
+  186  pdflatex Tesis_DIS
+  187  git add .
+  188  git commit -m "20250520 17:06"
+  189  git push
+  190  pdflatex Tesis_DIS
+  191  makeglossaries Tesis_DIS
+  192  biber Tesis_DIS
+  193  pdflatex Tesis_DIS
+  194  makeglossaries Tesis_DIS
+  195  biber Tesis_DIS
+  196  makeglossaries Tesis_DIS
+  197  biber Tesis_DIS
+  198  pdflatex Tesis_DIS
+  199  makeglossaries Tesis_DIS
+  200  biber Tesis_DIS
+  201  pdflatex Tesis_DIS
+  202  makeglossaries Tesis_DIS
+  203  biber Tesis_DIS
+  204  pdflatex Tesis_DIS
+  205  biber Tesis_DIS
+  206  clear
+  207  pdflatex Tesis_DIS
+  208  makeglossaries Tesis_DIS
+  209  biber Tesis_DIS
+  210  pdflatex Tesis_DIS
+  211  git add .
+  212  git commit -m "20250521 10:59"
+  213  git push
+  214  git status
+  215  git pull
+  216  clear
+  217  pdflatex sn-article
+  218  ls
+  219  cd art1-cnn-tra/
+  220  clear
+  221  pdflatex sn-article
+  222  clear
+  223  pdflatex sn-article
+  224  makeglossaries sn-article
+  225  bibtex sn-article
+  226  pdflatex sn-article
+  227  makeglossaries sn-article
+  228  bibtex sn-article
+  229  pdflatex sn-article
+  230  git add .
+  231  git commit -m "20250522 10:30"
+  232  git push
+  233  sudo apt install ./zoom_amd64.deb 
+  234  sudo su
+  235  nautilus admin:/
+  236  git status
+  237  git pull
+  238  history
+  239  lear
+  240  clear
+  241  pdflatex Tesis_DIS
+  242  makeglossaries Tesis_DIS
+  243  biber Tesis_DIS
+  244  pdflatex Tesis_DIS
+  245  clear
+  246  pdflatex Tesis_DIS
+  247  makeglossaries Tesis_DIS
+  248  biber Tesis_DIS
+  249  pdflatex Tesis_DIS
+  250  makeglossaries Tesis_DIS
+  251  biber Tesis_DIS
+  252  pdflatex Tesis_DIS
+  253  makeglossaries Tesis_DIS
+  254  biber Tesis_DIS
+  255  pdflatex Tesis_DIS
+  256  makeglossaries Tesis_DIS
+  257  biber Tesis_DIS
+  258  pdflatex Tesis_DIS
+  259  makeglossaries Tesis_DIS
+  260  biber Tesis_DIS
+  261  pdflatex Tesis_DIS
+  262  makeglossaries Tesis_DIS
+  263  biber Tesis_DIS
+  264  pdflatex Tesis_DIS
+  265  biber Tesis_DIS
+  266  pdflatex Tesis_DIS
+  267  makeglossaries Tesis_DIS
+  268  biber Tesis_DIS
+  269  pdflatex Tesis_DIS
+  270  makeglossaries Tesis_DIS
+  271  biber Tesis_DIS
+  272  pdflatex Tesis_DIS
+  273  makeglossaries Tesis_DIS
+  274  biber Tesis_DIS
+  275  pdflatex Tesis_DIS
+  276  makeglossaries Tesis_DIS
+  277  biber Tesis_DIS
+  278  pdflatex Tesis_DIS
+  279  makeglossaries Tesis_DIS
+  280  biber Tesis_DIS
+  281  pdflatex Tesis_DIS
+  282  makeglossaries Tesis_DIS
+  283  biber Tesis_DIS
+  284  pdflatex Tesis_DIS
+  285  makeglossaries Tesis_DIS
+  286  biber Tesis_DIS
+  287  pdflatex Tesis_DIS
+  288  makeglossaries Tesis_DIS
+  289  biber Tesis_DIS
+  290  pdflatex Tesis_DIS
+  291  git add .
+  292  git commit -m "20250526 17:15"
+  293  git push
+  294  clear
+  295  pdflatex Tesis_DIS
+  296  makeglossaries Tesis_DIS
+  297  biber Tesis_DIS
+  298  pdflatex Tesis_DIS
+  299  makeglossaries Tesis_DIS
+  300  biber Tesis_DIS
+  301  pdflatex Tesis_DIS
+  302  makeglossaries Tesis_DIS
+  303  biber Tesis_DIS
+  304  pdflatex Tesis_DIS
+  305  makeglossaries Tesis_DIS
+  306  biber Tesis_DIS
+  307  pdflatex Tesis_DIS
+  308  makeglossaries Tesis_DIS
+  309  biber Tesis_DIS
+  310  pdflatex Tesis_DIS
+  311  makeglossaries Tesis_DIS
+  312  biber Tesis_DIS
+  313  pdflatex Tesis_DIS
+  314  clear
+  315  pdflatex Tesis_DIS
+  316  makeglossaries Tesis_DIS
+  317  biber Tesis_DIS
+  318  pdflatex Tesis_DIS
+  319  git add .
+  320  git commit -m "20250527 11:32"
+  321  git push
+  322  clear
+  323  pdflatex sn-article
+  324  makeglossaries sn-article
+  325  bibtex sn-article
+  326  pdflatex sn-article
+  327  ls
+  328  cd art1-cnn-tra/
+  329  clear
+  330  pdflatex sn-article
+  331  makeglossaries sn-article
+  332  bibtex sn-article
+  333  pdflatex sn-article
+  334  makeglossaries sn-article
+  335  bibtex sn-article
+  336  pdflatex sn-article
+  337  git add .
+  338  git commit -m "20250527 17:26"
+  339  git push
+  340  git add .
+  341  git commit -m "20250527 14:25"
+  342  git push
+  343  ls
+  344  cd art1-cnn-tra/
+  345  clear
+  346  pdflatex sn-article
+  347  makeglossaries sn-article
+  348  bibtex sn-article
+  349  pdflatex sn-article
+  350  makeglossaries sn-article
+  351  bibtex sn-article
+  352  pdflatex sn-article
+  353  makeglossaries sn-article
+  354  bibtex sn-article
+  355  pdflatex sn-article
+  356  makeglossaries sn-article
+  357  bibtex sn-article
+  358  pdflatex sn-article
+  359  makeglossaries sn-article
+  360  bibtex sn-article
+  361  pdflatex sn-article
+  362  makeglossaries sn-article
+  363  bibtex sn-article
+  364  pdflatex sn-article
+  365  makeglossaries sn-article
+  366  bibtex sn-article
+  367  pdflatex sn-article
+  368  makeglossaries sn-article
+  369  bibtex sn-article
+  370  pdflatex sn-article
+  371  makeglossaries sn-article
+  372  bibtex sn-article
+  373  pdflatex sn-article
+  374  makeglossaries sn-article
+  375  bibtex sn-article
+  376  pdflatex sn-article
+  377  makeglossaries sn-article
+  378  bibtex sn-article
+  379  pdflatex sn-article
+  380  makeglossaries sn-article
+  381  bibtex sn-article
+  382  pdflatex sn-article
+  383  makeglossaries sn-article
+  384  bibtex sn-article
+  385  makeglossaries sn-article
+  386  bibtex sn-article
+  387  pdflatex sn-article
+  388  makeglossaries sn-article
+  389  bibtex sn-article
+  390  pdflatex sn-article
+  391  makeglossaries sn-article
+  392  bibtex sn-article
+  393  pdflatex sn-article
+  394  makeglossaries sn-article
+  395  bibtex sn-article
+  396  pdflatex sn-article
+  397  makeglossaries sn-article
+  398  bibtex sn-article
+  399  pdflatex sn-article
+  400  makeglossaries sn-article
+  401  bibtex sn-article
+  402  pdflatex sn-article
+  403  makeglossaries sn-article
+  404  bibtex sn-article
+  405  pdflatex sn-article
+  406  bibtex sn-article
+  407  makeglossaries sn-article
+  408  bibtex sn-article
+  409  pdflatex sn-article
+  410  makeglossaries sn-article
+  411  bibtex sn-article
+  412  pdflatex sn-article
+  413  clear
+  414  pdflatex sn-article
+  415  makeglossaries sn-article
+  416  bibtex sn-article
+  417  pdflatex sn-article
+  418  git status
+  419  git add .
+  420  git commit -m "20250528 14:49"
+  421  git push
+  422  cd ..
+  423  ls
+  424  git status
+  425  git add .
+  426  git commit -m "20250528 14:54"
+  427  git push
+  428  conda deactivate
+  429  clear
+  430  git status
+  431  git pull
+  432  pdflatex Tesis_DIS
+  433  makeglossaries Tesis_DIS
+  434  biber Tesis_DIS
+  435  pdflatex Tesis_DIS
+  436  clear
+  437  git add .
+  438  git commit -m "20250528 12:12"
+  439  git push
+  440  git status
+  441  sudo apt update && sudo apt upgrade -y
+  442  sudo apt install -y build-essential cmake git python3-pip mesa-utils libglu1-mesa-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev
+  443  sudo apt install libglfw3-dev libglew-dev libvulkan-dev
+  444  sudo apt install libbullet-dev
+  445  sudo apt install libopenal-dev libalut-dev
+  446  sudo apt install libglm-dev
+  447  ./Godot_v4.4.1-stable_linux.x86_64 
+  448  cd Documents/
+  449  cd godot/
+  450  ./Godot_v4.4.1-stable_linux.x86_64 
+  451  cd Documents/godot/
+  452  ./Godot_v4.4.1-stable_linux.x86_64 
+  453  cd Documents/godot/
+  454  clear
+  455  ls
+  456  ./Godot_v4.4.1-stable_linux.x86_64 
+  457  ./Godot_v4.4.1-stable_linux.x86_64 --rendering-driver opengl3
+  458  ./Godot_v4.4.1-stable_linux.x86_64
+  459  ./Godot_v4.4.1-stable_linux.x86_64 
+  460  ls
+  461  cd art1-cnn-tra/
+  462  clear
+  463  pdflatex sn-article
+  464  makeglossaries sn-article
+  465  bibtex sn-article
+  466  pdflatex sn-article
+  467  git add .
+  468  git commit -m "20250528 15:24"
+  469  git push
+  470  ls
+  471  ./Godot_v4.4.1-stable_linux.x86_64 
+  472  ./Godot_v4.4.1-stable_linux.x86_64 --rendering-driver opengl3
+  473  ./Godot_v4.4.1-stable_linux.x86_64 
+  474  ping https://darkwebinformer.com/alleged-data-breach-of-centro-nacional-de-estimacion-prevencion-y-reduccion-del-riesgo-de-desastres-cenepred/?s=09
+  475  ping goog.com.pe
+  476  sudo apt update && sudo apt install iputils-ping
+  477  ping www.google.com.pe
+  478  clear
+  479  ping https://darkwebinformer.com/alleged-data-breach-of-centro-nacional-de-estimacion-prevencion-y-reduccion-del-riesgo-de-desastres-cenepred/?s=09
+  480  ping https://darkwebinformer.com
+  481  ping wwww.google.com.pe
+  482  ping www.google.com.pe
+  483  ping darkwebinformer.com
+  484  ls
+  485  ./Godot_v4.4.1-stable_linux.x86_64 
+  486  hadoop version
+  487  python3 -V
+  488  hdfs dfs -mkdir -p /input
+  489  hdfs dfs -mkdir input
+  490  hadoop version
+  491  cd /opt
+  492  cd hadoop
+  493  cd sbin
+  494  ./start-all.sh
+  495  jps
+  496  ls 
+  497  cd ..
+  498  ls
+  499  cd /usr
+  500  ls
+  501  cd local
+  502  ls
+  503  whereis hadoop
+  504  cd /opt/hadoop
+  505  ls
+  506  cd bin
+  507  ls
+  508  cd hadoop
+  509  cd ..
+  510  ls
+  511  whereis core-site.xml
+  512  ./stop-all.sh
+  513  cd sbin
+  514  clear
+  515  ./stop-all.sh
+  516  ./start-all.sh
+  517  sudo ufw disable
+  518  jps
+  519  ./start-dfs.sh
+  520  jps
+  521  sudo systemctl status ssh
+  522  sudo systemctl start ssh
+  523  sudo apt update && apt upgrade -y
+  524  sudo apt install openssh-server
+  525  sudo systemctl start ssh
+  526  sudo systemctl enable ssh
+  527  sudo systemctl status ssh
+  528  clear
+  529  sudo ufw status
+  530  clear
+  531  hdfs dfs -mkdir -p /input
+  532  ./stop-all.sh
+  533  ./start-all.sh
+  534  jps
+  535  cd ~/.ssh
+  536  ls -la
+  537  ls
+  538  ssh localhost
+  539  chmod 700 ~/.ssh
+  540  chmod 600 ~/.ssh/authorized_keys
+  541  chmod 600 ~/.ssh/id_ed25519
+  542  chmod 644 ~/.ssh/id_ed25519.pub
+  543  ssh localhost
+  544  cd ..
+  545  rm ~/.ssh/id_ed25519 ~/.ssh/id_ed25519.pub ~/.ssh/authorized_keys
+  546  ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+  547  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  548  chmod 700 ~/.ssh
+  549  chmod 600 ~/.ssh/authorized_keys
+  550  chmod 600 ~/.ssh/id_rsa
+  551  cd ~/.ssh
+  552  ls
+  553  ssh localhost
+  554  whereis hadoop
+  555  cd /opt/hadoop
+  556  ls
+  557  cd sbin
+  558  ls
+  559  ./start-all.sh
+  560  jps
+  561  update-java-alternatives --list
+  562  readlink -f /usr/bin/java
+  563  whereis hadoop
+  564  cd ..
+  565  ls
+  566  cd hadoop/
+  567  ls
+  568  cd etc
+  569  ls
+  570  cd hadoop/
+  571  ls
+  572  nano hadoop-env.sh
+  573  nano ~/.bashrc
+  574  source ~/.bashrc
+  575  echo $JAVA_HOME 
+  576  java -version
+  577  clear
+  578  whereis hadoop
+  579  cd /opt/hadoop/
+  580  ls
+  581  cd sbin
+  582  ls
+  583  ./start-all.sh
+  584  jps
+  585  cd ~/Documents/
+  586  ls
+  587  cd hadoop-mapreduce/
+  588  clear
+  589  ls
+  590  hdfs dfs -mkdir input
+  591  hdfs dfs -mkdir -p /input
+  592  jps
+  593  cd /opt/hadoop/
+  594  ls
+  595  cd logs
+  596  ls
+  597  tail -f hadoop-miguelruiza-namenode-Prueba1.log
+  598  ..
+  599  cd ..
+  600  ls
+  601  cd sbin
+  602  ./stop-all.sh
+  603  cd ..
+  604  cd etc
+  605  ls
+  606  cd hadoop/
+  607  ls
+  608  nano core-site.xml 
+  609  nano hdfs-site.xml
+  610  cd ..
+  611  ls
+  612  cd bin
+  613  ls
+  614  hdfs namenode -format
+  615  cd ..
+  616  ls
+  617  cd sbin
+  618  ls
+  619  ./start-all.sh
+  620  jps
+  621  cd ~/Documents/hadoop-mapreduce/
+  622  ls
+  623  hdfs dfs -mkdir -p /input
+  624  hdfs dfs -put sample_tweets.csv /input
+  625  hdfs dfs -ls /
+  626  hdfs dfs -ls /input
+  627  echo $HADOOP_HOME 
+  628  cd $HADOOP_HOME 
+  629  ls
+  630  cd share
+  631  ls
+  632  cd hadoop/
+  633  ls
+  634  cd tools/
+  635  ls
+  636  cd lib
+  637  ls
+  638  cd ~/Documents/
+  639  clear
+  640  ls
+  641  cd hadoop-mapreduce/
+  642  clear
+  643  ls
+  644  hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -input /input/sample_tweets.csv -output /output -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py
+  645  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input /input/sample_tweets.csv -output  /output 
+  646  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input /input/sample_tweets.csv -output /output1
+  647  hdfs dfs -mkdir 2dato_origen_hdfs
+  648  history
+  649  lear
+  650  clear
+  651  sudo systemctl status ssh
+  652  sudo ufw status
+  653  history
+  654  hadoop version~
+  655  hadoop version
+  656  hdfs dfs -mkdir 2dato_origen_hdfs
+  657  whereis hadoop
+  658  cd /opt/hadoop
+  659  cd sbin
+  660  ls
+  661  ./stop-all.sh
+  662  ./start-all.sh
+  663  history
+  664  jps
+  665  hdfs dfs -mkdir 2dato_origen_hdfs
+  666  hdfs dfs -mkdir -p /user
+  667  hdfs dfs -mkdir /user/miguelruiza
+  668  hdfs dfs -chown miguelruiza:supergroup /user/miguelruiza
+  669  hdfs dfs -chmod 755 /user/miguelruiza
+  670  hdfs dfs -mkdir 2dato_origen_hdfs
+  671  hdfs dfs -ls /user/miguelruiza
+  672  hdfs dfs -put 1dato_origen/*.* 2dato_origen_hdfs
+  673  curl http://localhost:5000
+  674  hdfs dfs -ls /user/miguelruiza
+  675  hdfs dfs -ls /user/miguelruiza/2dato_origen_hdfs
+  676  ls
+  677  echo "1,I love Hadoop! It's amazing.,2024-01-01
+  678  2,MapReduce is complicated.,2024-01-02
+  679  3,Big Data is the future.,2024-01-03" | python3 mapper.py
+  680  pip
+  681  pip3
+  682  clear
+  683  pip3 install textblob
+  684  pip install textblob
+  685  pip3 install python3-textblob
+  686  pip3 install -U textblob
+  687  pip3 install textblob
+  688  sudo apt update
+  689  sudo apt install python3-venv
+  690  ls
+  691  python3 -m venv venv
+  692  source venv/bin/activate
+  693  pip install textblob
+  694  python -m textblob.download_corpora
+  695  echo "1,I love Hadoop! It's amazing.,2024-01-01
+  696  2,MapReduce is complicated.,2024-01-02
+  697  3,Big Data is the future.,2024-01-03" | python3 mapper.py
+  698  echo "1,I love Hadoop! It's amazing.,2024-01-01
+  699  2,MapReduce is complicated.,2024-01-02
+  700  3,Big Data is the future.,2024-01-03" | python3 mapper.py | sort -k1,1 | python3 reducer.py
+  701  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+  702  hdfs dfs -ls /user/miguelruiza/2dato_origen_hdfs_out
+  703  hdfs dfs -cat 2dato_origen_hdfs_out/part-00000
+  704  deactivate
+  705  source venv/bin/activate
+  706  deactivate
+  707  pip3 install flask
+  708  source venv/bin/activate
+  709  pip3 install flask
+  710  whereis hadoop
+  711  ls
+  712  python3 app.py
+  713  clear
+  714  echo $HADOOP_HOME
+  715  cd $HADOOP_HOME
+  716  ls
+  717  cd share
+  718  ls
+  719  cd hdoop
+  720  cd hadoop
+  721  ls
+  722  cd mapreduce
+  723  cd ..
+  724  cd mapreduce
+  725  ls
+  726  cd ..
+  727  cd tools
+  728  cd lib
+  729  ls
+  730  hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar reducer 2dato_origen 2dato_origen_out
+  731  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+  732  cd ~/Documents/
+  733  cd hadoop-mapreduce/
+  734  clear
+  735  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+  736  hdfs dfs -rm -r 2dato_origen_hdfs_out && mapred streaming   -file mapper.py   -mapper mapper.py   -file reducer.py   -reducer reducer.py   -input 2dato_origen_hdfs/*   -output 2dato_origen_hdfs_out
+  737  hdfs dfs -rm -r 2dato_origen_hdfs_out && mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+  738  python3 app.py
+  739  clear
+  740  hdfs dfs -rm -r 2dato_origen_hdfs_out
+  741  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+  742  hdfs dfs -put 1dato_origen/m*.* 2dato_origen_hdfs
+  743  ls
+  744  hdfs dfs -put 1dato_origen/*.* 2dato_origen_hdfs
+  745  hdfs dfs -ls /user/miguelruiza/2dato_origen_hdfs
+  746  hdfs dfs -ls /user/miguelruiza
+  747  mapred streaming -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input 2dato_origen_hdfs/* -output 2dato_origen_hdfs_out
+  748  hdfs dfs -rm -r 2dato_origen_hdfs_out
+  749  clear
+  750  python3 app.py
+  751  clear
+  752  hdfs dfs -rm -r 2dato_origen_hdfs_out
+  753  python3 -m pip show Jinja2
+  754  python3 -m pip show flask
+  755  python3 app.py
+  756  clear
+  757  python3 app.py
+  758  clear
+  759  python3 app.py
+  760  clear
+  761  python3 app.py
+  762  sudo lsof -i :5000
+  763  python3 app.py
+  764  python app.py
+  765  pip3 uninstall flask jinja2
+  766  pip3 install flask jinja2
+  767  clear
+  768  python app.py
+  769  clear
+  770  python app.py
+  771  /bin/python3 /home/miguelruiza/.windsurf/extensions/ms-python.python-2025.4.0-universal/python_files/printEnvVariablesToFile.py /home/miguelruiza/.windsurf/extensions/ms-python.python-2025.4.0-universal/python_files/deactivate/bash/envVars.txt
+  772  git status
+  773  git remote -v
+  774  git remote add origin git@github.com:miguelruiza/hadoop-mapreduce.git
+  775  git add .
+  776  git commit -m "20250604 12:30"
+  777  clear
+  778  git restore --staged .
+  779  git rm -r venv/
+  780  clear
+  781  git add .
+  782  git commit -m "20250604 12:41"
+  783  clear
+  784  git branch -M main
+  785  git push -u origin main
+  786  git remote -v
+  787  git push -u origin main
+  788  ssh -T git@github.com
+  789  ssh-keygen -t ed25519 -C "miguelruizad@gmail.com"
+  790  cat ~/.ssh/id_ed25519.pub
+  791  git push -u origin main
+  792  git add .
+  793  git commit -m "20250604 13:01!
+  794  git remote add origin git@github.com:tu_usuario/hadoop-mapreduce.git
+  795  git add .
+  796  git commit -m "Initial commit: Hadoop MapReduce project"
+  797  git remote -v
+  798  git push -u origin main
+  799  git commit -m "20250604 13:01"
+  800  git push
+  801  git add .
+  802  git commit -m "20250604 16:24"
+  803  git push
+  804  git add .
+  805  git commit -m "20250604 16:39"
+  806  git push
+  807  history
+  808  [200~source venv/bin/activate
+  809  source venv/bin/activate
+  810  clear
+  811  hdfs dfs -ls /2dato_origen_hdfs_out
+  812  hdfs dfs -ls 2dato_origen_hdfs_out
+  813  hdfs dfs -mkdir -p /2dato_origen_hdfs
+  814  hdfs dfs -ls 2dato_origen_hdfs_out
+  815  hdfs dfs -ls 2dato_origen_hdfs
+  816  hdfs dfs -ls /2dato_origen_hdfs
+  817  hdfs dfs -put /1dato_origen/sample_tweets.csv /2dato_origen_hdfs/
+  818  hdfs dfs -put 1dato_origen/sample_tweets.csv /2dato_origen_hdfs/
+  819  hdfs dfs -ls /2dato_origen_hdfs
+  820  hdfs dfs -ls 2dato_origen_hdfs
+  821  hdfs dfs -put 1dato_origen/sample_tweets.csv 2dato_origen_hdfs
+  822  hdfs dfs -ls 2dato_origen_hdfs
+  823  hdfs dfs -ls 2dato_origen_hdfs_out
+  824  source venv/bin/activate~
+  825  source venv/bin/activate
+  826  clear
+  827  jps
+  828  deactivate
+  829  jps
+  830  source venv/bin/activate
+  831  whereis hadoop
+  832  cd /opt/hadoop/
+  833  ls
+  834  cd sbin
+  835  ./start-all.sh
+  836  jps
+  837  sudo systemctl status ssh
+  838  clear
+  839  hdfs dfs -ls /user/miguelruiza/2dato_origen_hdfs_out
+  840  clear
+  841  python3 app.py
+  842  cd ~
+  843  cd Documents/hadoop-mapreduce/
+  844  clear
+  845  python3 app.py
+  846  clear
+  847  hdfs dfs -put 1dato_origen/*.* 2dato_origen_hdfs
+  848  hdfs dfs -ls 2dato_origen_hdfs
+  849  python3 app.py
+  850  clear
+  851  python3 app.py
+  852  cd Documents/
+  853  cd hadoop-mapreduce/
+  854  clear
+  855  echo "1,I love Hadoop! It's amazing.,2024-01-01
+  856  2,MapReduce is complicated.,2024-01-02
+  857  3,Big Data is the future.,2024-01-03" | python3 mapper.py
+  858  source venv/bin/activate
+  859  cd ~
+  860  source venv/bin/activate
+  861  cd Documents/
+  862  cd hadoop-mapreduce/
+  863  ls
+  864  source venv/bin/activate
+  865  source /venv/bin/activate
+  866  cd venv
+  867  ls
+  868  history
+  
+  
+  
+  869  cd /opt/hadoop/
+  870  cd sbin
+  871  ./start-all.sh
+  873  sudo systemctl status ssh
+  874  cd ~/Documents/hadoop-mapreduce/
+  878  source venv/bin/activate
+  879  python3 app.py
+  887  history >> comandos.txt
